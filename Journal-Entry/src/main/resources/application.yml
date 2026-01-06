@@ -1,0 +1,76 @@
+spring:
+  application:
+    name: Journal-Entry
+
+  #PostgreSQL Configuration
+  datasource:
+    url: jdbc:postgresql://postgres:5432/journaldb
+    username: journal_user
+    password: journal_pass
+    driver-class-name: org.postgresql.Driver
+
+  #JPA Configuration
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+
+  # Redis Configuration
+  data:
+    redis:
+      host: redis
+      port: 6379
+      timeout: 60000
+
+  cache:
+    type: redis
+    redis:
+      time-to-live: 600000
+      cache-null-values: false
+
+  #Kafka Configuration
+  kafka:
+    bootstrap-servers: kafka:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        spring.json.type.mapping: journalEvent:com.pro.Journal_Entry.dto.JournalEvent
+
+    consumer:
+      group-id: journal-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.type.mapping: journalEvent:com.pro.Journal_Entry.dto.JournalEvent
+        spring.json.trusted.packages: "*"
+
+#JWT Configuration
+jwt:
+  secret: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
+  expiration: 86400000
+
+
+#Kafka Topics
+kafka:
+  topic:
+    journal-events: journal-events
+
+
+#Server Configuration
+server:
+  port: 8080
+
+#Logging
+logging:
+  level:
+    com.pro.Journal_Entry: DEBUG
+    org.springframework.security: DEBUG
+    org.springframework.kafka: INFO
+
+
