@@ -13,29 +13,30 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface JournalRepository extends JpaRepository<JournalEntry,Long> {
-    /*
+public interface JournalRepository extends JpaRepository<JournalEntry, Long> {
+
+    /**
      * Find journal by user and date
      * Returns Optional - may or may not exist
      */
-
-    Optional<JournalEntry> findByUserIdAndJournalDateAndDeletedFalseJournalEntry(
-            Long userId, LocalDate journalDate);
-
-    /*
-      Check  if journal exists for user on specific date
-    */
-
-    Boolean existsByUserIdAndJournalDateAndDeleteFalse(
+    Optional<JournalEntry> findByUserIdAndJournalDateAndDeletedFalse(
             Long userId,
             LocalDate journalDate
     );
 
-    /*
-    Get all journals for a user (paginated)
-    Pageable allows : page number , size, sorting
-    */
-    Page<JournalEntry> findByUserIdAndDeleteFalse(
+    /**
+     * Check if journal exists for user on specific date
+     */
+    Boolean existsByUserIdAndJournalDateAndDeletedFalse(
+            Long userId,
+            LocalDate journalDate
+    );
+
+    /**
+     * Get all journals for a user (paginated)
+     * Pageable allows: page number, size, sorting
+     */
+    Page<JournalEntry> findByUserIdAndDeletedFalse(
             Long userId,
             Pageable pageable
     );
@@ -44,24 +45,18 @@ public interface JournalRepository extends JpaRepository<JournalEntry,Long> {
      * Get journals for a specific month
      * Between dates: first day and last day of month
      */
-    @Query("SELECT j from JournalEntry j where j.user.id =: userId  " +
-            "And j.journalDate BETWEEN :startDate AND : endDate " +
-            "AND j.delete = false")
+    @Query("SELECT j FROM JournalEntry j WHERE j.user.id = :userId " +
+            "AND j.journalDate BETWEEN :startDate AND :endDate " +
+            "AND j.deleted = false")
     List<JournalEntry> findByUserIdAndDateRange(
             @Param("userId") Long userId,
             @Param("startDate") LocalDate startDate,
-            @Param("endDate") LocalDate endDate);
+            @Param("endDate") LocalDate endDate
+    );
 
-    /*
-      j.user.id is a path that tells Hibernate to:
-      Start at the JournalEntry object (j).
-      Go to its User object (.user).
-      Read the ID field inside that User object (.id).
-    */
-
-    /*
-      Search journals by keyword int title or content
-    */
+    /**
+     * Search journals by keyword in title or content
+     */
     @Query("SELECT j FROM JournalEntry j WHERE j.user.id = :userId " +
             "AND j.deleted = false " +
             "AND (LOWER(j.title) LIKE LOWER(CONCAT('%', :keyword, '%')) " +

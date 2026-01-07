@@ -1,0 +1,28 @@
+# Maven build output
+Journal-Entry/target/
+!Journal-Entry/target/*.jar
+
+# IDE files
+.idea/
+*.iml
+*.iws
+*.ipr
+.vscode/
+.settings/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+
+# Logs
+*.log
+
+# Test files
+Journal-Entry/src/test/
+
+# Documentation
+*.md

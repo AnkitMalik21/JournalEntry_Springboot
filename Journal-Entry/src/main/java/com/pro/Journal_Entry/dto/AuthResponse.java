@@ -13,6 +13,7 @@ import java.util.Set;
 @AllArgsConstructor
 public class AuthResponse {
     private String token;
+    @Builder.Default  // ← ADD THIS
     private String type="Bearer";
     private Long userId;
     private String username;

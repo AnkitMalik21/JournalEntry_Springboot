@@ -1,0 +1,200 @@
+journal-app  | 2026-01-07T12:14:27.053Z  WARN 1 --- [Journal-Entry] [ntry-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=Journal-Entry-producer-1] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+journal-app  | 2026-01-07T12:14:27.785Z  INFO 1 --- [Journal-Entry] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-journal-group-1, groupId=journal-group] Node 1 disconnected.
+journal-app  | 2026-01-07T12:14:27.785Z  WARN 1 --- [Journal-Entry] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-journal-group-1, groupId=journal-group] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+journal-app  | 2026-01-07T12:14:27.893Z  INFO 1 --- [Journal-Entry] [ntry-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=Journal-Entry-producer-1] Node 1 disconnected.
+journal-app  | 2026-01-07T12:14:27.893Z  WARN 1 --- [Journal-Entry] [ntry-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=Journal-Entry-producer-1] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+journal-app  | 2026-01-07T12:14:28.791Z  INFO 1 --- [Journal-Entry] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-journal-group-1, groupId=journal-group] Node 1 disconnected.
+journal-app  | 2026-01-07T12:14:28.791Z  WARN 1 --- [Journal-Entry] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-journal-group-1, groupId=journal-group] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+journal-app  | 2026-01-07T12:14:28.909Z  INFO 1 --- [Journal-Entry] [ntry-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=Journal-Entry-producer-1] Node 1 disconnected.
+journal-app  | 2026-01-07T12:14:28.909Z  WARN 1 --- [Journal-Entry] [ntry-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=Journal-Entry-producer-1] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+journal-app  | 2026-01-07T12:14:29.793Z  INFO 1 --- [Journal-Entry] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-journal-group-1, groupId=journal-group] Node 1 disconnected.
+journal-app  | 2026-01-07T12:14:29.793Z  WARN 1 --- [Journal-Entry] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-journal-group-1, groupId=journal-group] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+journal-app  | 2026-01-07T12:14:29.884Z  INFO 1 --- [Journal-Entry] [ntry-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=Journal-Entry-producer-1] Node 1 disconnected.
+journal-app  | 2026-01-07T12:14:29.884Z  WARN 1 --- [Journal-Entry] [ntry-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=Journal-Entry-producer-1] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+journal-app  | 2026-01-07T12:14:30.650Z  INFO 1 --- [Journal-Entry] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-journal-group-1, groupId=journal-group] Node 1 disconnected.
+journal-app  | 2026-01-07T12:14:30.650Z  WARN 1 --- [Journal-Entry] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-journal-group-1, groupId=journal-group] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+journal-app  | 2026-01-07T12:14:30.841Z  INFO 1 --- [Journal-Entry] [ntry-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=Journal-Entry-producer-1] Node 1 disconnected.
+journal-app  | 2026-01-07T12:14:30.841Z  WARN 1 --- [Journal-Entry] [ntry-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=Journal-Entry-producer-1] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+journal-app  | 2026-01-07T12:14:31.087Z DEBUG 1 --- [Journal-Entry] [nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing PUT /api/journals/11
+journal-app  | Hibernate: 
+journal-app  |     select
+journal-app  |         u1_0.id,
+journal-app  |         u1_0.created,
+journal-app  |         u1_0.email,
+journal-app  |         u1_0.password,
+journal-app  |         u1_0.updated_at,
+journal-app  |         u1_0.username 
+journal-app  |     from
+journal-app  |         users u1_0 
+journal-app  |     where
+journal-app  |         u1_0.username=?
+journal-app  | Hibernate: 
+journal-app  |     select
+journal-app  |         r1_0.user_id,
+journal-app  |         r1_1.id,
+journal-app  |         r1_1.name 
+journal-app  |     from
+journal-app  |         user_roles r1_0 
+journal-app  |     join
+journal-app  |         roles r1_1 
+journal-app  |             on r1_1.id=r1_0.role_id 
+journal-app  |     where
+journal-app  |         r1_0.user_id=?
+journal-app  | 2026-01-07T12:14:31.105Z DEBUG 1 --- [Journal-Entry] [nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Secured PUT /api/journals/11
+journal-app  | Hibernate: 
+journal-app  |     select
+journal-app  |         je1_0.id,
+journal-app  |         je1_0.content,
+journal-app  |         je1_0.created_at,
+journal-app  |         je1_0.deleted,
+journal-app  |         je1_0.journal_date,
+journal-app  |         je1_0.mood,
+journal-app  |         je1_0.title,
+journal-app  |         je1_0.updated_at,
+journal-app  |         je1_0.user_id 
+journal-app  |     from
+journal-app  |         journal_entries je1_0 
+journal-app  |     where
+journal-app  |         je1_0.id=?
+journal-app  | Hibernate: 
+journal-app  |     select
+journal-app  |         u1_0.id,
+journal-app  |         u1_0.created,
+journal-app  |         u1_0.email,
+journal-app  |         u1_0.password,
+journal-app  |         u1_0.updated_at,
+journal-app  |         u1_0.username 
+journal-app  |     from
+journal-app  |         users u1_0 
+journal-app  |     where
+journal-app  |         u1_0.id=?
+journal-app  | 2026-01-07T12:14:31.117Z  INFO 1 --- [Journal-Entry] [nio-8080-exec-8] c.p.J.service.JournalService             : Journal updated: id=11
+journal-app  | Hibernate: 
+journal-app  |     update
+journal-app  |         journal_entries 
+journal-app  |     set
+journal-app  |         content=?,
+journal-app  |         deleted=?,
+journal-app  |         journal_date=?,
+journal-app  |         mood=?,
+journal-app  |         title=?,
+journal-app  |         updated_at=?,
+journal-app  |         user_id=? 
+journal-app  |     where
+journal-app  |         id=?
+journal-app  | 2026-01-07T12:14:31.645Z  INFO 1 --- [Journal-Entry] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-journal-group-1, groupId=journal-group] Node 1 disconnected.
+journal-app  | 2026-01-07T12:14:31.645Z  WARN 1 --- [Journal-Entry] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-journal-group-1, groupId=journal-group] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+journal-app  | 2026-01-07T12:14:31.693Z  INFO 1 --- [Journal-Entry] [ntry-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=Journal-Entry-producer-1] Node 1 disconnected.
+journal-app  | 2026-01-07T12:14:31.693Z  WARN 1 --- [Journal-Entry] [ntry-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=Journal-Entry-producer-1] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+journal-app  | 2026-01-07T12:14:32.646Z  INFO 1 --- [Journal-Entry] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-journal-group-1, groupId=journal-group] Node 1 disconnected.
+journal-app  | 2026-01-07T12:14:32.646Z  WARN 1 --- [Journal-Entry] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-journal-group-1, groupId=journal-group] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+journal-app  | 2026-01-07T12:14:32.696Z  INFO 1 --- [Journal-Entry] [ntry-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=Journal-Entry-producer-1] Node 1 disconnected.
+journal-app  | 2026-01-07T12:14:32.696Z  WARN 1 --- [Journal-Entry] [ntry-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=Journal-Entry-producer-1] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+journal-app  | 2026-01-07T12:14:33.603Z  INFO 1 --- [Journal-Entry] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-journal-group-1, groupId=journal-group] Node 1 disconnected.
+journal-app  | 2026-01-07T12:14:33.603Z  WARN 1 --- [Journal-Entry] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-journal-group-1, groupId=journal-group] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+journal-app  | 2026-01-07T12:14:33.735Z  INFO 1 --- [Journal-Entry] [ntry-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=Journal-Entry-producer-1] Node 1 disconnected.
+journal-app  | 2026-01-07T12:14:33.735Z  WARN 1 --- [Journal-Entry] [ntry-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=Journal-Entry-producer-1] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+journal-app  | 2026-01-07T12:14:34.653Z  INFO 1 --- [Journal-Entry] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-journal-group-1, groupId=journal-group] Node 1 disconnected.
+journal-app  | 2026-01-07T12:14:34.653Z  WARN 1 --- [Journal-Entry] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-journal-group-1, groupId=journal-group] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+journal-app  | 2026-01-07T12:14:34.743Z  INFO 1 --- [Journal-Entry] [ntry-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=Journal-Entry-producer-1] Node 1 disconnected.
+journal-app  | 2026-01-07T12:14:34.743Z  WARN 1 --- [Journal-Entry] [ntry-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=Journal-Entry-producer-1] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+journal-app  | 2026-01-07T12:14:35.649Z  INFO 1 --- [Journal-Entry] [ntry-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=Journal-Entry-producer-1] Node 1 disconnected.
+journal-app  | 2026-01-07T12:14:35.649Z  WARN 1 --- [Journal-Entry] [ntry-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=Journal-Entry-producer-1] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+journal-app  | 2026-01-07T12:14:35.654Z  INFO 1 --- [Journal-Entry] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-journal-group-1, groupId=journal-group] Node 1 disconnected.
+journal-app  | 2026-01-07T12:14:35.654Z  WARN 1 --- [Journal-Entry] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-journal-group-1, groupId=journal-group] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+journal-app  | 2026-01-07T12:14:36.604Z  INFO 1 --- [Journal-Entry] [ntry-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=Journal-Entry-producer-1] Node 1 disconnected.
+journal-app  | 2026-01-07T12:14:36.605Z  WARN 1 --- [Journal-Entry] [ntry-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=Journal-Entry-producer-1] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+journal-app  | 2026-01-07T12:14:36.655Z  INFO 1 --- [Journal-Entry] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-journal-group-1, groupId=journal-group] Node 1 disconnected.
+journal-app  | 2026-01-07T12:14:36.655Z  WARN 1 --- [Journal-Entry] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-journal-group-1, groupId=journal-group] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+journal-app  | 2026-01-07T12:14:37.611Z  INFO 1 --- [Journal-Entry] [ntry-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=Journal-Entry-producer-1] Node 1 disconnected.
+journal-app  | 2026-01-07T12:14:37.611Z  WARN 1 --- [Journal-Entry] [ntry-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=Journal-Entry-producer-1] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+journal-app  | 2026-01-07T12:14:37.619Z  INFO 1 --- [Journal-Entry] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-journal-group-1, groupId=journal-group] Node 1 disconnected.
+journal-app  | 2026-01-07T12:14:37.619Z  WARN 1 --- [Journal-Entry] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-journal-group-1, groupId=journal-group] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+journal-app  | 2026-01-07T12:14:38.619Z  INFO 1 --- [Journal-Entry] [ntry-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=Journal-Entry-producer-1] Node 1 disconnected.
+journal-app  | 2026-01-07T12:14:38.619Z  WARN 1 --- [Journal-Entry] [ntry-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=Journal-Entry-producer-1] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+journal-app  | 2026-01-07T12:14:38.627Z  INFO 1 --- [Journal-Entry] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-journal-group-1, groupId=journal-group] Node 1 disconnected.
+journal-app  | 2026-01-07T12:14:38.627Z  WARN 1 --- [Journal-Entry] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-journal-group-1, groupId=journal-group] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+journal-app  | 2026-01-07T12:14:39.620Z  INFO 1 --- [Journal-Entry] [ntry-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=Journal-Entry-producer-1] Node 1 disconnected.
+journal-app  | 2026-01-07T12:14:39.620Z  WARN 1 --- [Journal-Entry] [ntry-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=Journal-Entry-producer-1] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+journal-app  | 2026-01-07T12:14:39.636Z  INFO 1 --- [Journal-Entry] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-journal-group-1, groupId=journal-group] Node 1 disconnected.
+journal-app  | 2026-01-07T12:14:39.636Z  WARN 1 --- [Journal-Entry] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-journal-group-1, groupId=journal-group] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+journal-app  | 2026-01-07T12:14:40.476Z  INFO 1 --- [Journal-Entry] [ntry-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=Journal-Entry-producer-1] Node 1 disconnected.
+journal-app  | 2026-01-07T12:14:40.476Z  WARN 1 --- [Journal-Entry] [ntry-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=Journal-Entry-producer-1] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+journal-app  | 2026-01-07T12:14:40.649Z  INFO 1 --- [Journal-Entry] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-journal-group-1, groupId=journal-group] Node 1 disconnected.
+journal-app  | 2026-01-07T12:14:40.649Z  WARN 1 --- [Journal-Entry] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-journal-group-1, groupId=journal-group] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+journal-app  | 2026-01-07T12:14:41.478Z  INFO 1 --- [Journal-Entry] [ntry-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=Journal-Entry-producer-1] Node 1 disconnected.
+journal-app  | 2026-01-07T12:14:41.478Z  WARN 1 --- [Journal-Entry] [ntry-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=Journal-Entry-producer-1] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+journal-app  | 2026-01-07T12:14:41.505Z  INFO 1 --- [Journal-Entry] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-journal-group-1, groupId=journal-group] Node 1 disconnected.
+journal-app  | 2026-01-07T12:14:41.505Z  WARN 1 --- [Journal-Entry] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-journal-group-1, groupId=journal-group] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+journal-app  | 2026-01-07T12:14:42.337Z  INFO 1 --- [Journal-Entry] [ntry-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=Journal-Entry-producer-1] Node 1 disconnected.
+journal-app  | 2026-01-07T12:14:42.338Z  WARN 1 --- [Journal-Entry] [ntry-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=Journal-Entry-producer-1] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+journal-app  | 2026-01-07T12:14:42.432Z  INFO 1 --- [Journal-Entry] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-journal-group-1, groupId=journal-group] Node 1 disconnected.
+journal-app  | 2026-01-07T12:14:42.432Z  WARN 1 --- [Journal-Entry] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-journal-group-1, groupId=journal-group] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+journal-app  | 2026-01-07T12:14:43.386Z  INFO 1 --- [Journal-Entry] [ntry-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=Journal-Entry-producer-1] Node 1 disconnected.
+journal-app  | 2026-01-07T12:14:43.386Z  WARN 1 --- [Journal-Entry] [ntry-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=Journal-Entry-producer-1] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+journal-app  | 2026-01-07T12:14:43.433Z  INFO 1 --- [Journal-Entry] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-journal-group-1, groupId=journal-group] Node 1 disconnected.
+journal-app  | 2026-01-07T12:14:43.433Z  WARN 1 --- [Journal-Entry] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-journal-group-1, groupId=journal-group] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+journal-app  | 2026-01-07T12:14:44.241Z  INFO 1 --- [Journal-Entry] [ntry-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=Journal-Entry-producer-1] Node 1 disconnected.
+journal-app  | 2026-01-07T12:14:44.242Z  WARN 1 --- [Journal-Entry] [ntry-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=Journal-Entry-producer-1] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+journal-app  | 2026-01-07T12:14:44.351Z  INFO 1 --- [Journal-Entry] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-journal-group-1, groupId=journal-group] Node 1 disconnected.
+journal-app  | 2026-01-07T12:14:44.351Z  WARN 1 --- [Journal-Entry] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-journal-group-1, groupId=journal-group] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+journal-app  | 2026-01-07T12:14:45.045Z  INFO 1 --- [Journal-Entry] [ntry-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=Journal-Entry-producer-1] Node 1 disconnected.
+journal-app  | 2026-01-07T12:14:45.046Z  WARN 1 --- [Journal-Entry] [ntry-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=Journal-Entry-producer-1] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+journal-app  | 2026-01-07T12:14:45.359Z  INFO 1 --- [Journal-Entry] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-journal-group-1, groupId=journal-group] Node 1 disconnected.
+journal-app  | 2026-01-07T12:14:45.359Z  WARN 1 --- [Journal-Entry] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-journal-group-1, groupId=journal-group] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+journal-app  | 2026-01-07T12:14:46.051Z  INFO 1 --- [Journal-Entry] [ntry-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=Journal-Entry-producer-1] Node 1 disconnected.
+journal-app  | 2026-01-07T12:14:46.051Z  WARN 1 --- [Journal-Entry] [ntry-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=Journal-Entry-producer-1] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+journal-app  | 2026-01-07T12:14:46.315Z  INFO 1 --- [Journal-Entry] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-journal-group-1, groupId=journal-group] Node 1 disconnected.
+journal-app  | 2026-01-07T12:14:46.315Z  WARN 1 --- [Journal-Entry] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-journal-group-1, groupId=journal-group] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+journal-app  | 2026-01-07T12:14:47.053Z  INFO 1 --- [Journal-Entry] [ntry-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=Journal-Entry-producer-1] Node 1 disconnected.
+journal-app  | 2026-01-07T12:14:47.053Z  WARN 1 --- [Journal-Entry] [ntry-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=Journal-Entry-producer-1] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+journal-app  | 2026-01-07T12:14:47.314Z  INFO 1 --- [Journal-Entry] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-journal-group-1, groupId=journal-group] Node 1 disconnected.
+journal-app  | 2026-01-07T12:14:47.314Z  WARN 1 --- [Journal-Entry] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-journal-group-1, groupId=journal-group] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+journal-app  | 2026-01-07T12:14:48.054Z  INFO 1 --- [Journal-Entry] [ntry-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=Journal-Entry-producer-1] Node 1 disconnected.
+journal-app  | 2026-01-07T12:14:48.054Z  WARN 1 --- [Journal-Entry] [ntry-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=Journal-Entry-producer-1] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+journal-app  | 2026-01-07T12:14:48.322Z  INFO 1 --- [Journal-Entry] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-journal-group-1, groupId=journal-group] Node 1 disconnected.
+journal-app  | 2026-01-07T12:14:48.322Z  WARN 1 --- [Journal-Entry] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-journal-group-1, groupId=journal-group] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+journal-app  | 2026-01-07T12:14:49.024Z  INFO 1 --- [Journal-Entry] [ntry-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=Journal-Entry-producer-1] Node 1 disconnected.
+journal-app  | 2026-01-07T12:14:49.024Z  WARN 1 --- [Journal-Entry] [ntry-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=Journal-Entry-producer-1] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+journal-app  | 2026-01-07T12:14:49.347Z  INFO 1 --- [Journal-Entry] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-journal-group-1, groupId=journal-group] Node 1 disconnected.
+journal-app  | 2026-01-07T12:14:49.347Z  WARN 1 --- [Journal-Entry] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-journal-group-1, groupId=journal-group] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+journal-app  | 2026-01-07T12:14:50.031Z  INFO 1 --- [Journal-Entry] [ntry-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=Journal-Entry-producer-1] Node 1 disconnected.
+journal-app  | 2026-01-07T12:14:50.031Z  WARN 1 --- [Journal-Entry] [ntry-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=Journal-Entry-producer-1] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+journal-app  | 2026-01-07T12:14:50.348Z  INFO 1 --- [Journal-Entry] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-journal-group-1, groupId=journal-group] Node 1 disconnected.
+journal-app  | 2026-01-07T12:14:50.349Z  WARN 1 --- [Journal-Entry] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-journal-group-1, groupId=journal-group] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+journal-app  | 2026-01-07T12:14:50.980Z  INFO 1 --- [Journal-Entry] [ntry-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=Journal-Entry-producer-1] Node 1 disconnected.
+journal-app  | 2026-01-07T12:14:50.980Z  WARN 1 --- [Journal-Entry] [ntry-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=Journal-Entry-producer-1] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+journal-app  | 2026-01-07T12:14:51.355Z  INFO 1 --- [Journal-Entry] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-journal-group-1, groupId=journal-group] Node 1 disconnected.
+journal-app  | 2026-01-07T12:14:51.355Z  WARN 1 --- [Journal-Entry] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-journal-group-1, groupId=journal-group] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+journal-app  | 2026-01-07T12:14:51.836Z  INFO 1 --- [Journal-Entry] [ntry-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=Journal-Entry-producer-1] Node 1 disconnected.
+journal-app  | 2026-01-07T12:14:51.836Z  WARN 1 --- [Journal-Entry] [ntry-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=Journal-Entry-producer-1] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+journal-app  | 2026-01-07T12:14:52.353Z  INFO 1 --- [Journal-Entry] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-journal-group-1, groupId=journal-group] Node 1 disconnected.
+journal-app  | 2026-01-07T12:14:52.353Z  WARN 1 --- [Journal-Entry] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-journal-group-1, groupId=journal-group] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+journal-app  | 2026-01-07T12:14:52.886Z  INFO 1 --- [Journal-Entry] [ntry-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=Journal-Entry-producer-1] Node 1 disconnected.
+journal-app  | 2026-01-07T12:14:52.886Z  WARN 1 --- [Journal-Entry] [ntry-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=Journal-Entry-producer-1] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+journal-app  | 2026-01-07T12:14:53.360Z  INFO 1 --- [Journal-Entry] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-journal-group-1, groupId=journal-group] Node 1 disconnected.
+journal-app  | 2026-01-07T12:14:53.360Z  WARN 1 --- [Journal-Entry] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-journal-group-1, groupId=journal-group] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+journal-app  | 2026-01-07T12:14:53.887Z  INFO 1 --- [Journal-Entry] [ntry-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=Journal-Entry-producer-1] Node 1 disconnected.
+journal-app  | 2026-01-07T12:14:53.887Z  WARN 1 --- [Journal-Entry] [ntry-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=Journal-Entry-producer-1] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+journal-app  | 2026-01-07T12:14:54.214Z  INFO 1 --- [Journal-Entry] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-journal-group-1, groupId=journal-group] Node 1 disconnected.
+journal-app  | 2026-01-07T12:14:54.214Z  WARN 1 --- [Journal-Entry] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-journal-group-1, groupId=journal-group] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+journal-app  | 2026-01-07T12:14:54.743Z  INFO 1 --- [Journal-Entry] [ntry-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=Journal-Entry-producer-1] Node 1 disconnected.
+journal-app  | 2026-01-07T12:14:54.743Z  WARN 1 --- [Journal-Entry] [ntry-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=Journal-Entry-producer-1] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+journal-app  | 2026-01-07T12:14:55.215Z  INFO 1 --- [Journal-Entry] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-journal-group-1, groupId=journal-group] Node 1 disconnected.
+journal-app  | 2026-01-07T12:14:55.215Z  WARN 1 --- [Journal-Entry] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-journal-group-1, groupId=journal-group] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+journal-app  | 2026-01-07T12:14:55.742Z  INFO 1 --- [Journal-Entry] [ntry-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=Journal-Entry-producer-1] Node 1 disconnected.
+journal-app  | 2026-01-07T12:14:55.742Z  WARN 1 --- [Journal-Entry] [ntry-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=Journal-Entry-producer-1] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+journal-app  | 2026-01-07T12:14:56.220Z  INFO 1 --- [Journal-Entry] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-journal-group-1, groupId=journal-group] Node 1 disconnected.
+journal-app  | 2026-01-07T12:14:56.220Z  WARN 1 --- [Journal-Entry] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-journal-group-1, groupId=journal-group] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+journal-app  | 2026-01-07T12:14:56.697Z  INFO 1 --- [Journal-Entry] [ntry-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=Journal-Entry-producer-1] Node 1 disconnected.
+journal-app  | 2026-01-07T12:14:56.697Z  WARN 1 --- [Journal-Entry] [ntry-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=Journal-Entry-producer-1] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+journal-app  | 2026-01-07T12:14:57.262Z  INFO 1 --- [Journal-Entry] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-journal-group-1, groupId=journal-group] Node 1 disconnected.
+journal-app  | 2026-01-07T12:14:57.262Z  WARN 1 --- [Journal-Entry] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-journal-group-1, groupId=journal-group] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+journal-app  | 2026-01-07T12:14:57.704Z  INFO 1 --- [Journal-Entry] [ntry-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=Journal-Entry-producer-1] Node 1 disconnected.
+journal-app  | 2026-01-07T12:14:57.705Z  WARN 1 --- [Journal-Entry] [ntry-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=Journal-Entry-producer-1] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+journal-app  | 2026-01-07T12:14:58.242Z  INFO 1 --- [Journal-Entry] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-journal-group-1, groupId=journal-group] Node 1 disconnected.
+journal-app  | 2026-01-07T12:14:58.243Z  WARN 1 --- [Journal-Entry] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-journal-group-1, groupId=journal-group] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+journal-app  | 2026-01-07T12:14:58.705Z  INFO 1 --- [Journal-Entry] [ntry-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=Journal-Entry-producer-1] Node 1 disconnected.
+journal-app  | 2026-01-07T12:14:58.706Z  WARN 1 --- [Journal-Entry] [ntry-producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=Journal-Entry-producer-1] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.
+journal-app  | 2026-01-07T12:14:59.170Z  INFO 1 --- [Journal-Entry] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-journal-group-1, groupId=journal-group] Node 1 disconnected.
+journal-app  | 2026-01-07T12:14:59.170Z  WARN 1 --- [Journal-Entry] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-journal-group-1, groupId=journal-group] Connection to node 1 (localhost/127.0.0.1:9092) could not be established. Node may not be available.

@@ -1,24 +1,25 @@
 package com.pro.Journal_Entry.service;
 
-import com.pro.Journal_Entry.dto.CalenderDayResponse;
+import com.pro.Journal_Entry.dto.CalendarDayResponse;  // ← FIXED: Was CalenderDayResponse
 import com.pro.Journal_Entry.dto.JournalRequest;
 import com.pro.Journal_Entry.dto.JournalResponse;
 import com.pro.Journal_Entry.entity.JournalEntry;
 import com.pro.Journal_Entry.entity.User;
 import com.pro.Journal_Entry.enums.EventType;
 import com.pro.Journal_Entry.exception.DuplicateJournalException;
+import com.pro.Journal_Entry.exception.ResourceNotFoundException;  // ← FIXED: Wrong import
 import com.pro.Journal_Entry.repository.JournalRepository;
 import com.pro.Journal_Entry.repository.UserRepository;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.kafka.common.errors.ResourceNotFoundException;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.cache.annotation.Caching;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;  // ← FIXED: Wrong import
 
 import java.time.LocalDate;
 import java.time.YearMonth;
@@ -35,12 +36,13 @@ import java.util.List;
  */
 @Service
 @RequiredArgsConstructor
-@Slf4j //Lombok: provides logger
+@Slf4j
 public class JournalService {
 
     private final JournalRepository journalRepository;
     private final UserRepository userRepository;
     private final KafkaProducerService kafkaProducerService;
+
     /**
      * Create journal entry
      *
@@ -51,23 +53,21 @@ public class JournalService {
      * 4. Send Kafka event
      * 5. Return response
      */
-
     @Transactional
-    @Caching(evict ={
-            @CacheEvict(value = "journals",key = "#userId +'-' + #request.journalDate"),
-            @CacheEvict(value = "calender", key = "#userId + '-' + #request.journalDate.year + '-' + #request.journalDate.monthValue")
+    @Caching(evict = {
+            @CacheEvict(value = "journals", key = "#userId + '_' + #request.journalDate"),
+            @CacheEvict(value = "calendar", key = "#userId + '_' + #request.journalDate.year + '_' + #request.journalDate.monthValue")
     })
-    public JournalResponse createJournal(Long userId, JournalRequest request){
-        //Check if the journal already exists for this date
-        if(journalRepository.existsByUserIdAndJournalDateAndDeleteFalse(userId,request.getJournalDate())){
+    public JournalResponse createJournal(Long userId, JournalRequest request) {
+
+        // FIXED: Changed to existsByUserIdAndJournalDateAndDeletedFalse
+        if (journalRepository.existsByUserIdAndJournalDateAndDeletedFalse(userId, request.getJournalDate())) {
             throw new DuplicateJournalException("Journal already exists for date: " + request.getJournalDate());
         }
 
-        // Get user
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found"));
 
-        //Create journal entry
         JournalEntry journal = JournalEntry.builder()
                 .title(request.getTitle())
                 .content(request.getContent())
@@ -79,10 +79,9 @@ public class JournalService {
 
         journal = journalRepository.save(journal);
 
-        //Send kafka event (asynchronous)
         kafkaProducerService.sendJournalEvent(journal, EventType.JOURNAL_CREATED);
 
-        log.info("Journal created: userId={},date={}",userId,request.getJournalDate());
+        log.info("Journal created: userId={}, date={}", userId, request.getJournalDate());
         return mapToResponse(journal);
     }
 
@@ -92,23 +91,26 @@ public class JournalService {
      * @Cacheable - Result cached with key "userId_date"
      * Example: "123_2026-01-05"
      */
+    @Cacheable(value = "journals", key = "#userId + '_' + #date")
+    public JournalResponse getJournalByDate(Long userId, LocalDate date) {
 
-    @Cacheable(value = "journals",key="#userId + '_' + #date")
-    public JournalResponse getJournalByDate(Long userId, LocalDate date){
+        // FIXED: Removed extra "JournalEntry" at the end
         JournalEntry journal = journalRepository
-                .findByUserIdAndJournalDateAndDeletedFalseJournalEntry(userId,date)
+                .findByUserIdAndJournalDateAndDeletedFalse(userId, date)
                 .orElseThrow(() -> new ResourceNotFoundException(
                         "No journal found for date: " + date
                 ));
-        log.info("Journal retrieved from database: userId={}, date={}",userId,date);
+
+        log.info("Journal retrieved from database: userId={}, date={}", userId, date);
         return mapToResponse(journal);
     }
 
     /**
      * Get user's journals (paginated)
      */
-    public Page<JournalResponse> getUserJournals(Long userId, Pageable pageable){
-        Page<JournalEntry> journals = journalRepository.findByUserIdAndDeleteFalse(userId,pageable);
+    public Page<JournalResponse> getUserJournals(Long userId, Pageable pageable) {
+        // FIXED: Changed to findByUserIdAndDeletedFalse
+        Page<JournalEntry> journals = journalRepository.findByUserIdAndDeletedFalse(userId, pageable);
         return journals.map(this::mapToResponse);
     }
 
@@ -118,51 +120,51 @@ public class JournalService {
      *
      * Example: GET /api/journals/calendar?month=2026-01
      */
+    @Cacheable(value = "calendar", key = "#userId + '_' + #yearMonth.year + '_' + #yearMonth.monthValue")
+    public List<CalendarDayResponse> getCalendarMonth(Long userId, YearMonth yearMonth) {  // FIXED: Method name
 
-    @Cacheable(value = "calendar", key ="#userId + '_' + #yearMonth.year + '_' + #yearMonth.monthValue")
-    public List<CalenderDayResponse> getCalenderMonth(Long userId, YearMonth yearMonth){
         LocalDate startDate = yearMonth.atDay(1);
         LocalDate endDate = yearMonth.atEndOfMonth();
 
-        //Get all journals for this month
         List<JournalEntry> journals = journalRepository
-                .findByUserIdAndDateRange(userId,startDate,endDate);
+                .findByUserIdAndDateRange(userId, startDate, endDate);
 
-        //create response for each day in month
-        List<CalenderDayResponse> calender = new ArrayList<>();
+        List<CalendarDayResponse> calendar = new ArrayList<>();  // FIXED: Variable name
 
-        for(int day = 1;day<=yearMonth.lengthOfMonth();day++){
+        for (int day = 1; day <= yearMonth.lengthOfMonth(); day++) {
             LocalDate currentDate = yearMonth.atDay(day);
 
-            //Find journal for this day
             JournalEntry journal = journals.stream()
-                    .filter(j->j.getJournalDate().equals(currentDate))
+                    .filter(j -> j.getJournalDate().equals(currentDate))
                     .findFirst()
                     .orElse(null);
 
-            calender.add(CalenderDayResponse.builder()
+            calendar.add(CalendarDayResponse.builder()
                     .date(currentDate)
-                    .hasJournal(journal!=null)
+                    .hasJournal(journal != null)
                     .journalId(journal != null ? journal.getId() : null)
-                    .title(journal != null ? journal.getContent() : null)
+                    .title(journal != null ? journal.getTitle() : null)  // FIXED: Was getContent()
                     .build());
         }
-        log.info("Calender retrieved: userId={}, month={}",userId,yearMonth);
-        return calender;
+
+        log.info("Calendar retrieved: userId={}, month={}", userId, yearMonth);
+        return calendar;
     }
 
-    // update journal
+    /**
+     * Update journal
+     */
     @Transactional
     @Caching(evict = {
-            @CacheEvict(value = "journals",key = "#userId + '_' + #result.journalDate"),
-            @CacheEvict(value = "calender", key = "#userId + '_' + #result.journalDate.year + '_' + #result.journalDate.monthValue")
+            @CacheEvict(value = "journals", key = "#userId + '_' + #result.journalDate"),
+            @CacheEvict(value = "calendar", key = "#userId + '_' + #result.journalDate.year + '_' + #result.journalDate.monthValue")
     })
-    public JournalResponse updateJournal(Long userId,Long journalId,JournalRequest request){
+    public JournalResponse updateJournal(Long userId, Long journalId, JournalRequest request) {
+
         JournalEntry journal = journalRepository.findById(journalId)
                 .orElseThrow(() -> new ResourceNotFoundException("Journal not found"));
 
-        //check ownership
-        if(!journal.getUser().getId().equals(userId)){
+        if (!journal.getUser().getId().equals(userId)) {
             throw new RuntimeException("Unauthorized");
         }
 
@@ -172,34 +174,90 @@ public class JournalService {
 
         journal = journalRepository.save(journal);
 
-        //Send Kafka event
-        kafkaProducerService.sendJournalEvent(journal,EventType.JOURNAL_UPDATED);
+        kafkaProducerService.sendJournalEvent(journal, EventType.JOURNAL_UPDATED);
 
-        log.info("Journal updated: id={}",journalId);
+        log.info("Journal updated: id={}", journalId);
         return mapToResponse(journal);
     }
 
-    //Delete journal (soft delete)
+    /**
+     * Delete journal (soft delete)
+     */
     @Transactional
     @Caching(evict = {
-            @CacheEvict(value = "journals",allEntries = true),
-            @CacheEvict(value = "calender",allEntries = true)
+            @CacheEvict(value = "journals", allEntries = true),
+            @CacheEvict(value = "calendar", allEntries = true)
     })
-    public void deleteJournal(Long userId,Long journalId){
+    public void deleteJournal(Long userId, Long journalId) {
+
         JournalEntry journal = journalRepository.findById(journalId)
                 .orElseThrow(() -> new ResourceNotFoundException("Journal not found"));
 
-        //check ownership
-        if(!journal.getUser().getId().equals(userId)){
+        if (!journal.getUser().getId().equals(userId)) {
             throw new RuntimeException("Unauthorized");
         }
 
-        //Soft delete
         journal.setDeleted(true);
         journalRepository.save(journal);
 
-        //Send Kafka event
-        kafkaProducerService.sendJournalEvent(journal,EventType.JOURNAL_DELETED);
-        log.info("Journal deleted: id={}",journalId);
+        kafkaProducerService.sendJournalEvent(journal, EventType.JOURNAL_DELETED);
+
+        log.info("Journal deleted: id={}", journalId);
+    }
+
+    /**
+     * Search journals by keyword
+     */
+    public Page<JournalResponse> searchJournals(Long userId, String keyword, Pageable pageable) {
+        Page<JournalEntry> journals = journalRepository
+                .searchJournals(userId, keyword, pageable);
+        return journals.map(this::mapToResponse);
+    }
+
+    /**
+     * Admin: Get all journals
+     */
+    @PreAuthorize("hasRole('ADMIN')")
+    public Page<JournalResponse> getAllJournals(Pageable pageable) {
+        Page<JournalEntry> journals = journalRepository.findByDeletedFalse(pageable);
+        return journals.map(this::mapToResponse);
+    }
+
+    /**
+     * Admin: Delete any journal
+     */
+    @PreAuthorize("hasRole('ADMIN')")
+    @Transactional
+    @Caching(evict = {
+            @CacheEvict(value = "journals", allEntries = true),
+            @CacheEvict(value = "calendar", allEntries = true)
+    })
+    public void adminDeleteJournal(Long journalId) {
+        JournalEntry journal = journalRepository.findById(journalId)
+                .orElseThrow(() -> new ResourceNotFoundException("Journal not found"));
+
+        journal.setDeleted(true);
+        journalRepository.save(journal);
+
+        kafkaProducerService.sendJournalEvent(journal, EventType.JOURNAL_DELETED);
+
+        log.info("Admin deleted journal: id={}", journalId);
+    }
+
+    /**
+     * Map entity to DTO
+     */
+    private JournalResponse mapToResponse(JournalEntry journal) {
+        return JournalResponse.builder()
+                .id(journal.getId())
+                .title(journal.getTitle())
+                .content(journal.getContent())
+                .journalDate(journal.getJournalDate())
+                .mood(journal.getMood())
+                .userId(journal.getUser().getId())
+                .username(journal.getUser().getUsername())
+                .createdAt(journal.getCreatedAt())
+                .updatedAt(journal.getUpdatedAt())
+                .build();
     }
 }

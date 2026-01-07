@@ -12,7 +12,7 @@ import java.time.LocalDate;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CalenderDayResponse implements Serializable {
+public class CalendarDayResponse implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
